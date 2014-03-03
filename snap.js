@@ -14,7 +14,6 @@
     'use strict';
     var Snap = Snap || function(userOpts) {
             var settings = {
-                previousState: 'closed',
                 element: null,
                 dragger: null,
                 disable: 'none',
@@ -224,7 +223,6 @@
                             $('.snap-drawer').width(Math.abs(n) + 'px');
                             var $element = $(settings.element);
                             var direction = action.translate.get.matrix(4);
-                            settings.previousState = (direction > 0) ? 'left' : ((direction < 0) ? 'right' : 'closed');
                             $element.data('width', n);
                             $element.trigger(cache.vendor + 'TransitionEnd');
                         }
@@ -534,7 +532,6 @@
                 }
                 return {
                     state: state,
-                    previousState: settings.previousState,
                     info: cache.simpleStates
                 };
             };
